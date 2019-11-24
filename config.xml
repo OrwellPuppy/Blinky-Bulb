@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<widget id="com.scrambly.word" versionCode='10001' version="1.0.1">
+<widget id="com.blinky.bulb" versionCode='10001' version="1.0.1">
     <plugin name="cordova-plugin-splashscreen" spec="~1" source="npm" />
     <name>Blinky Bulb</name>
     <description>
         a quick puzzle game
     </description>
-    <author email="scramblyword@gmail.com" href="www.scramblyword.com">
+    <author email="ScramblyWord@gmail.com" href="www.ScramblyWord.com">
         Jonathan Hathhorn
     </author>
 
@@ -16,7 +16,6 @@
         <preference name="SplashScreen" value="screen"/>
         <preference name="SplashMaintainAspectRatio" value="true"/>
         <preference name="SplashShowOnlyFirstTime" value="true"/>
-        
 
         <icon background="@color/background" density="ldpi" foreground="www/res/icon/androidForeground/ldpi.png"/>
         <icon background="@color/background" density="mdpi" foreground="www/res/icon/androidForeground/mdpi.png"/>
