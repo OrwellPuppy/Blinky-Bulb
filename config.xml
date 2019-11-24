@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
+
 <widget id="com.scrambly.word" versionCode='10001' version="1.0.1">
+    <plugin name="cordova-plugin-splashscreen" spec="~1" source="npm" />
     <name>Blinky Bulb</name>
     <description>
         a quick puzzle game
@@ -7,9 +9,38 @@
     <author email="scramblyword@gmail.com" href="www.scramblyword.com">
         Jonathan Hathhorn
     </author>
-	<platform name="android" />
+
+    <platform name="android">
+        <resource-file src="www/res/values/colors.xml" target="/app/src/main/res/values/colors.xml" />
+        <preference name="android-manifest/application/activity/@android:theme" value="@android:style/Theme.Translucent.NoTitleBar" />
+        <preference name="SplashScreen" value="screen"/>
+        <preference name="SplashMaintainAspectRatio" value="true"/>
+        <preference name="SplashShowOnlyFirstTime" value="true"/>
+        
+
+        <icon background="@color/background" density="ldpi" foreground="www/res/icon/androidForeground/ldpi.png"/>
+        <icon background="@color/background" density="mdpi" foreground="www/res/icon/androidForeground/mdpi.png"/>
+        <icon background="@color/background" density="hdpi" foreground="www/res/icon/androidForeground/hdpi.png"/>
+        <icon background="@color/background" density="xhdpi" foreground="www/res/icon/androidForeground/xhdpi.png"/>
+        <icon background="@color/background" density="xxhdpi" foreground="www/res/icon/androidForeground/xxhdpi.png"/>
+        <icon background="@color/background" density="xxxhdpi" foreground="www/res/icon/androidForeground/xxxhdpi.png"/>
+
+         <!--  Splash  -->
+        <splash density="port-ldpi" src="www/res/screen/android/splash-port-ldpi.png"/>
+        <splash density="port-mdpi" src="www/res/screen/android/splash-port-mdpi.png"/>
+        <splash density="port-hdpi" src="www/res/screen/android/splash-port-hdpi.png"/>
+        <splash density="port-xhdpi" src="www/res/screen/android/splash-port-xhdpi.png"/>
+        <splash density="port-xxhdpi" src="www/res/screen/android/splash-port-xxhdpi.png"/>
+        <splash density="port-xxxhdpi" src="www/res/screen/android/splash-port-xxxhdpi.png"/>
+
+    </platform>
     <content src="index.html" />
     <access origin="*" />
-    <preference name="android-targetSdkVersion" value="26"/>
-    <icon src="icon.png" />
+    <preference name="android-targetSdkVersion" value="28"/>
+    <preference name="phonegap-version" value="cli-9.0.0" />
+    <icon src="www/icon.png" />
+
 </widget>
+ <!--
+    https://pgicons.abiro.com/
+      -->

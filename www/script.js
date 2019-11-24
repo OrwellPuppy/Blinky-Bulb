@@ -385,7 +385,7 @@ function SaveData(){
     if(localStorage.getItem('currentLevel')!=null){
       this.currentLevel=parseInt(localStorage.getItem('currentLevel'));
     }else{
-      localStorage.setItem('currentLevel',49);//set to zero except for testing BOOKMARK
+      localStorage.setItem('currentLevel',0);//set to zero except for testing BOOKMARK
     }
     for(var i=1;i<=savedScoresMax;i++){
       if(!localStorage.getItem('score'+i)){
@@ -839,19 +839,24 @@ function resizePane(){
   //make smaller if desktop
   if(!jQuery.browser.mobile){
 
-    if((main.width()>main.height()*2)&&(main.height()<600)){
-      pane.css('width',main.height()*1.5);
-      pane.css('height',main.height());
+    if(main.width()>400){
+      pane.css('width',400+((main.width()-400)*.25*(4/8)));
     }else{
-      pane.css('width',main.height()*.5);
-      pane.css('height',main.height()*.75);
+      pane.css('width',main.width());
     }
+
+    if(main.height()>800){
+      pane.css('height',800+((main.height()-800)*.25));
+    }else{
+      pane.css('height',main.height());
+    }
+    
 
   }
 }
 
 function redrawMenu(){
-  pane.css('overflow', 'scroll')
+  //pane.css('overflow', 'scroll')
   resizePane();
   var paneHeight=pane.height();
   var paneWidth=pane.width();  
@@ -912,7 +917,7 @@ function redrawMenu(){
 }
 
 function redraw(notAgain, secOffset){
-  pane.css('overflow','hidden');
+  //pane.css('overflow','hidden');
   if(!(notAgain==true)){
     setTimeout(function(){redraw(true)},315);
   }
