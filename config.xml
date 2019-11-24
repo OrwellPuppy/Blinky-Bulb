@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.scrambly.word" versionCode='10001' version="1.0.1">
-    <name>Select Four</name>
+    <name>Blinky Bulb</name>
     <description>
-        a puzzle game
+        a quick puzzle game
     </description>
     <author email="scramblyword@gmail.com" href="www.scramblyword.com">
         Jonathan Hathhorn
