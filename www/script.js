@@ -42,7 +42,7 @@ var challengeBox=$("<div id='challengeBox' class='menuItem statsBox'></div>");
 var progBox=$("<div id='progBox' class='menuItem statsBox'></div>");
 var instructBox=$("<div id='instructBox' class='menuItem statsBox'>"
   +"<h3 class='test smallHeader titleFont invis'>- HOW TO PLAY -</h3>"
-  +"<h4 class='test smallHeader titleFont invis'>Selecting a bulb will toggle a pattern of bulbs on or off. To win, select the correct combination of bulbs such that all the bulbs are toggled off.   Solve puzzles with no time limit in <i>PROGRESSION</i>, or challenge yourself by solving randomly generated puzzles in 30 seconds in <i>ROULETTE</i>.</h4>"
+  +"<h4 class='test smallHeader titleFont invis'>Select a bulb to toggle a pattern of bulbs on or off. To win, select the correct combination of bulbs such that all the bulbs are toggled off.   Solve puzzles with no time limit in <i>PROGRESSION</i>, or challenge yourself by solving randomly generated puzzles in 30 seconds in <i>ROULETTE</i>.</h4>"
   +"</div>");
 var progLabel=$("<div id='progLabel' class='list menuItem myLabel'></div>");
 var statsListA=$("<div id='statsListA' class='list menuItem myLabel'></div>");
