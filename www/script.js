@@ -8,7 +8,7 @@ function updateDeviceType(){
   }else{console.log('NON-MOBILE BROWSER');}
 }
 //generally assume vertical
-localStorage.clear()
+//localStorage.clear();
 var pane=$();
 var main=$();
 var sec1=$();
