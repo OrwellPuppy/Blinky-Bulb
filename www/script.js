@@ -8,7 +8,7 @@ function updateDeviceType(){
   }else{console.log('NON-MOBILE BROWSER');}
 }
 //generally assume vertical
-//localStorage.clear();
+//localStorage.clear(); //bookmark testing
 var pane=$();
 var main=$();
 var sec1=$();
@@ -269,7 +269,6 @@ function puzzle(){
     sortThisList(bulbList);
     this.solution=bulbList;
   }
-
   this.getBannedList=function(){
     var bList=[];
     var newBan=true;
@@ -483,7 +482,6 @@ $(document).ready(function() {
   //Do this after document loads
   pane=$('#pane');
   main=$('#main');
-  //sData.init();
   showMenu();
   //createLevels(); //only used when creating random levels for progression
 });
@@ -573,7 +571,7 @@ function showMenu(){
   challengeBox.append(statsListC);
   challengeBox.append(myList);
   console.log('currentHigh: '+sData.currentHigh);
-  sData.init();//solve issue of data
+  sData.init();
   for(var i=0;i<savedScoresMax;i++){
     myList.append(scoreList[i]);
     scoreList[i].html(sData.getScore(i+1));
@@ -586,11 +584,6 @@ function showMenu(){
     }
   }
   statsListA.text(sData.getCurrentStreak());
-  /*if(sData.currentLevel<=10){
-    progLabel.text('tutorial level '+(sData.currentLevel+1));
-  }else{
-    progLabel.text('level '+(sData.currentLevel-9));
-  }*/
   progLabel.text('level '+(sData.currentLevel+1));
   $('.menuItem').fadeIn(0);
   redrawMenu();
@@ -697,7 +690,7 @@ function calcAndThrowRound(){
         g.generateRound(maxSelection);
       }
       altSolutions=findAltSolutions(g.solution);//takes the time to calc, must be after generate round
-      g.getBannedList();  //bookmark  
+      g.getBannedList();
       popRound(g.solution);
       setTimeout(function(){
         addNodeClickEvents();//must be at the very end so that you dont click them before its ready
@@ -713,7 +706,6 @@ function calcAndThrowRound(){
 
 function throwClue(){
   usedClue=true;
-  //subSecV.css('background-color',myGreen);
   subSecV.css('color','black');
   //clue button event
 
@@ -783,11 +775,10 @@ function initializeThePane(){
       clue();
     });
   }else if(currentGameType=='level'){ //no clue
+    subSecC.html('EXIT');
     subSecV.css('background-color',lightestGrey);
   }else{//roulette games
     subSecV.css('background-color',lightestGrey);
-    //subSecV.css('color',backgroundGrey);
-    //subSecV.remove();
     subSecC.html('FORFEIT');
     subSecC.css('color', myRed);
 
@@ -838,25 +829,20 @@ function addNodeClickEvents(){
 function resizePane(){
   //make smaller if desktop
   if(!jQuery.browser.mobile){
-
     if(main.width()>400){
       pane.css('width',400+((main.width()-400)*.25*(4/8)));
     }else{
       pane.css('width',main.width());
     }
-
     if(main.height()>800){
       pane.css('height',800+((main.height()-800)*.25));
     }else{
       pane.css('height',main.height());
     }
-    
-
   }
 }
 
 function redrawMenu(){
-  //pane.css('overflow', 'scroll')
   resizePane();
   var paneHeight=pane.height();
   var paneWidth=pane.width();  
@@ -1094,8 +1080,13 @@ function redraw(notAgain, secOffset){
     subSecD.css('font-size', ssFont);
     subSecD.css('line-height', sec3width*.82+'px');
   }
-  clock.css('font-size', ssSize*.55);
-  clock.css('line-height', subSecHeight*.8-11+'px');
+  if(sData.currentLevel>998 && currentGameType=='level'){//bookmark
+    clock.css('font-size', ssFont*1.3);
+    clock.css('line-height', subSecHeight*.8-11+'px');
+  }else{
+    clock.css('font-size', ssSize*.55);
+    clock.css('line-height', subSecHeight*.8-11+'px');
+  }
   clockLabel.css('font-size', ssFont);
   selections.css('font-size', ssSize*.55);
   selections.css('line-height', subSecHeight*.8-11+'px');
@@ -1223,6 +1214,9 @@ function clickOnNode(nodeImage){
       subSecA.stop(true,true);
       if(currentGameType=='level'){
         sData.currentLevel++;
+        if(sData.currentLevel>34999){
+          sData.currentLevel=0;
+        }
         sData.saveLevel();
         myRunFunction=instaBeginLevel;
       }else if(finalTime>0){
@@ -1642,11 +1636,7 @@ function updateClock(deadline){
     timeRemaining=0;
     subSecA.stop(true,true);
     subSecA.css('background-color', myRed);
-    sData.saveLoss();//bookend
-    /*unbindAll();
-    setTimeout(function(){
-      endRound("You're out of time.", showMenu);
-    },600);*/
+    sData.saveLoss();
   }
   clock.text(timeRemaining);
 }
@@ -1698,24 +1688,3 @@ function blackOut(outTime, bColor, completeF){
      pane.fadeTo(outTime,1,'easeInQuad');    
   });
 }
-
-
-/*
--a few different random win-ending animations
--a way to restart or select level on progression?
-
-Old List 8/24/2019
--Progression clue need criteria for determining availability, end of tutorial?
--create tutorial levels, etc
--review the desktop and tablet proportions to optimize, make vertical
--try to fix bug where the high scores are being lost somehow?? made null.. deleted and not re-loaded?
--weird touch action violations
-
-https://coolors.co/5f4669-c04abc-419d78-95a3a4-c5d5ea
-
------notes from testing as app-----
--fix issue with it not loading mobile the first time
--appears to not be refreshing on horz/vert refresh
--make the game area scaling a lot closer to zero, b/c it gets ugly, maybe exactly zero..
--fix resizing for non-mobile.. words outside of buttons, etc
-*/
