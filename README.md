@@ -1,4 +1,5 @@
 # Blinky-Bulb
-Blinky Bulb is a quick puzzle game developed for Android with PhoneGap, but also works on the Web.
+Blinky Bulb is a quick puzzle game developed for Android with PhoneGap.
 
-Download the live Android version from the Google Play Store here: https://play.google.com/store/apps/details?id=com.blinky.bulb
+Demo the app on the Web:
+https://orwellpuppy.github.io/Blinky-Bulb-PhoneGap/www/
